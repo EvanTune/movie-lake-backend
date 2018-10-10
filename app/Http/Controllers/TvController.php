@@ -50,4 +50,15 @@ class TvController extends Controller
         return $response->getBody();
 
     }
+
+    public function getTvCredits($id) {
+
+        $url = "https://api.themoviedb.org/3/tv/" . $id . "/credits?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
 }

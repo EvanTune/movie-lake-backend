@@ -52,4 +52,33 @@ class MovieController extends Controller
 
     }
 
+    public function getMovieCredits($id) {
+
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "/credits?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
+
+    public function getMovieVideos($id) {
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "/videos?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+    }
+
+    public function getMovieImages($id) {
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "/images?api_key=". env('MOVIE_DATABASE_API_KEY');
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+    }
+
 }
