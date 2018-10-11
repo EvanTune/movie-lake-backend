@@ -81,4 +81,18 @@ class MovieController extends Controller
         return $response->getBody();
     }
 
+    public function search(Request $request) {
+
+        $query = $request->input('query');
+
+        $url = "https://api.themoviedb.org/3/search/multi?query=". $query . "&api_key=". env('MOVIE_DATABASE_API_KEY');
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+
+    }
+
 }
