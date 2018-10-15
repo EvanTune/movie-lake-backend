@@ -40,5 +40,6 @@ Route::get('/person/{id}', 'PersonController@getPerson');
 Route::get('/person/{id}/movie_credits', 'PersonController@getPersonMovieCredits');
 Route::get('/person/{id}/tv_credits', 'PersonController@getPersonTvCredits');
 Route::get('/person/{id}/combined_credits', 'PersonController@getPersonCombinedCredits');
+Route::get('/person/{id}/images', 'PersonController@getPersonImages');
 
 Route::get('/search', 'MovieController@search');

@@ -60,4 +60,15 @@ class PersonController extends Controller
         return $response->getBody();
 
     }
+
+    public function getPersonImages($id) {
+
+        $url = "https://api.themoviedb.org/3/person/" . $id . "/images?api_key=". env('MOVIE_DATABASE_API_KEY');
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
 }
