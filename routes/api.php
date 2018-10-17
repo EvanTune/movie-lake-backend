@@ -33,6 +33,10 @@ Route::get('/tv/upcoming', 'TvController@getUpcomingTv');
 Route::get('/tv/theatres', 'TvController@getTheatresTv');
 Route::get('/tv/{id}', 'TvController@getTv');
 Route::get('/tv/{id}/credits', 'TvController@getTvCredits');
+Route::get('/tv/{id}/videos', 'TvController@getTvVideos');
+Route::get('/tv/{id}/images', 'TvController@getTvImages');
+Route::get('/tv/{id}/season/{id2}', 'TvController@getTvSeason');
+Route::get('/tv/{id}/season/{id2}/episode/{id3}', 'TvController@getTvEpisode');
 
 // PEOPLE
 Route::get('/people/popular', 'PersonController@getPopularPeople');
