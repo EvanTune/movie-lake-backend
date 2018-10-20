@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/movies/popular', 'MovieController@getPopularMovies');
 Route::get('/movies/upcoming', 'MovieController@getUpcomingMovies');
 Route::get('/movies/theatres', 'MovieController@getTheatresMovies');
+Route::get('/movies/top', 'MovieController@getTopMovies');
 Route::get('/movie/{id}', 'MovieController@getMovie');
 Route::get('/movie/{id}/credits', 'MovieController@getMovieCredits');
 Route::get('/movie/{id}/videos', 'MovieController@getMovieVideos');

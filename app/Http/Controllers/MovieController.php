@@ -41,6 +41,17 @@ class MovieController extends Controller
 
     }
 
+    public function getTopMovies() {
+
+        $url = "https://api.themoviedb.org/3/movie/top_rated?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US&page=1";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
+
     public function getMovie($id) {
 
         $url = "https://api.themoviedb.org/3/movie/" . $id . "?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
