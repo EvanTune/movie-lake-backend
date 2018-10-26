@@ -27,6 +27,7 @@ Route::get('/movie/{id}', 'MovieController@getMovie');
 Route::get('/movie/{id}/credits', 'MovieController@getMovieCredits');
 Route::get('/movie/{id}/videos', 'MovieController@getMovieVideos');
 Route::get('/movie/{id}/images', 'MovieController@getMovieImages');
+Route::get('/discover/movie', 'MovieController@getMovieDiscover');
 
 // TV
 Route::get('/tv/popular', 'TvController@getPopularTv');

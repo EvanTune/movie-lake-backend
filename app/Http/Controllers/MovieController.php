@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use GuzzleHttp\Client;
 
 use Illuminate\Http\Request;
@@ -8,20 +9,10 @@ use Illuminate\Http\Request;
 class MovieController extends Controller
 {
 
-    public function getPopularMovies() {
+    public function getPopularMovies()
+    {
 
-        $url = "https://api.themoviedb.org/3/movie/popular?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US&page=1";
-
-        $client = new Client();
-        $response = $client->request('GET', $url);
-
-        return $response->getBody();
-
-    }
-
-    public function getUpcomingMovies() {
-
-        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US&page=1";
+        $url = "https://api.themoviedb.org/3/movie/popular?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
         $client = new Client();
         $response = $client->request('GET', $url);
@@ -30,20 +21,10 @@ class MovieController extends Controller
 
     }
 
-    public function getTheatresMovies() {
+    public function getUpcomingMovies()
+    {
 
-        $url = "https://api.themoviedb.org/3/movie/now_playing?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US&page=1";
-
-        $client = new Client();
-        $response = $client->request('GET', $url);
-
-        return $response->getBody();
-
-    }
-
-    public function getTopMovies() {
-
-        $url = "https://api.themoviedb.org/3/movie/top_rated?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US&page=1";
+        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
         $client = new Client();
         $response = $client->request('GET', $url);
@@ -52,20 +33,10 @@ class MovieController extends Controller
 
     }
 
-    public function getMovie($id) {
+    public function getTheatresMovies()
+    {
 
-        $url = "https://api.themoviedb.org/3/movie/" . $id . "?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
-
-        $client = new Client();
-        $response = $client->request('GET', $url);
-
-        return $response->getBody();
-
-    }
-
-    public function getMovieCredits($id) {
-
-        $url = "https://api.themoviedb.org/3/movie/" . $id . "/credits?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
+        $url = "https://api.themoviedb.org/3/movie/now_playing?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
         $client = new Client();
         $response = $client->request('GET', $url);
@@ -74,8 +45,45 @@ class MovieController extends Controller
 
     }
 
-    public function getMovieVideos($id) {
-        $url = "https://api.themoviedb.org/3/movie/" . $id . "/videos?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
+    public function getTopMovies()
+    {
+
+        $url = "https://api.themoviedb.org/3/movie/top_rated?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
+
+    public function getMovie($id)
+    {
+
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
+
+    public function getMovieCredits($id)
+    {
+
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "/credits?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+
+    }
+
+    public function getMovieVideos($id)
+    {
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "/videos?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US";
 
         $client = new Client();
         $response = $client->request('GET', $url);
@@ -83,8 +91,9 @@ class MovieController extends Controller
         return $response->getBody();
     }
 
-    public function getMovieImages($id) {
-        $url = "https://api.themoviedb.org/3/movie/" . $id . "/images?api_key=". env('MOVIE_DATABASE_API_KEY');
+    public function getMovieImages($id)
+    {
+        $url = "https://api.themoviedb.org/3/movie/" . $id . "/images?api_key=" . env('MOVIE_DATABASE_API_KEY');
 
         $client = new Client();
         $response = $client->request('GET', $url);
@@ -92,17 +101,33 @@ class MovieController extends Controller
         return $response->getBody();
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
 
         $query = $request->input('query');
 
-        $url = "https://api.themoviedb.org/3/search/multi?query=". $query . "&api_key=". env('MOVIE_DATABASE_API_KEY');
+        $url = "https://api.themoviedb.org/3/search/multi?query=" . $query . "&api_key=" . env('MOVIE_DATABASE_API_KEY');
 
         $client = new Client();
         $response = $client->request('GET', $url);
 
         return $response->getBody();
 
+    }
+
+    public function getMovieDiscover(Request $request)
+    {
+
+        $sort = $request->input('sort');
+        $year = $request->input('year');
+        $genres = $request->input('genres');
+
+        $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&primary_release_year=" . $year . "&vote_count.gte=100";
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
 
     }
 
