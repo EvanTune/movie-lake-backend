@@ -123,7 +123,7 @@ class MovieController extends Controller
         $genres = $request->input('genres');
         $page = $request->input('page');
 
-        $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&primary_release_year=" . $year . "&vote_count.gte=100" . "&page=" . $page;
+        $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&primary_release_year=" . $year . "&vote_count.gte=50" . "&page=" . $page;
 
         $client = new Client();
         $response = $client->request('GET', $url);
