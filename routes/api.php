@@ -28,6 +28,8 @@ Route::get('/movie/{id}/credits', 'MovieController@getMovieCredits');
 Route::get('/movie/{id}/videos', 'MovieController@getMovieVideos');
 Route::get('/movie/{id}/images', 'MovieController@getMovieImages');
 Route::get('/discover/movie', 'MovieController@getMovieDiscover');
+Route::get('/search/movie', 'MovieController@getMovieSearch');
+Route::get('/search/multi', 'MovieController@getMultiSearch');
 
 // TV
 Route::get('/tv/popular', 'TvController@getPopularTv');
@@ -40,6 +42,7 @@ Route::get('/tv/{id}/images', 'TvController@getTvImages');
 Route::get('/tv/{id}/season/{id2}', 'TvController@getTvSeason');
 Route::get('/tv/{id}/season/{id2}/episode/{id3}', 'TvController@getTvEpisode');
 Route::get('/discover/tv', 'TvController@getTvDiscover');
+Route::get('/search/tv', 'TvController@getTvSearch');
 
 // PEOPLE
 Route::get('/people/popular', 'PersonController@getPopularPeople');
@@ -48,5 +51,4 @@ Route::get('/person/{id}/movie_credits', 'PersonController@getPersonMovieCredits
 Route::get('/person/{id}/tv_credits', 'PersonController@getPersonTvCredits');
 Route::get('/person/{id}/combined_credits', 'PersonController@getPersonCombinedCredits');
 Route::get('/person/{id}/images', 'PersonController@getPersonImages');
-
-Route::get('/search', 'MovieController@search');
+Route::get('/search/person', 'PersonController@getPersonSearch');

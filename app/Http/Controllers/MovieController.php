@@ -132,4 +132,28 @@ class MovieController extends Controller
 
     }
 
+    public function getMovieSearch(Request $request) {
+        $query = $request->input('query');
+        $page = $request->input('page');
+
+        $url = "https://api.themoviedb.org/3/search/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US"  . "&vote_count.gte=50" . "&page=" . $page . "&query=" . $query;
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+    }
+
+    public function getMultiSearch(Request $request) {
+        $query = $request->input('query');
+        $page = $request->input('page');
+
+        $url = "https://api.themoviedb.org/3/search/multi?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US"  . "&vote_count.gte=50" . "&page=" . $page . "&query=" . $query;
+
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        return $response->getBody();
+    }
+
 }
