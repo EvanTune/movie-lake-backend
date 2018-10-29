@@ -122,8 +122,16 @@ class MovieController extends Controller
         $year = $request->input('year');
         $genres = $request->input('genres');
         $page = $request->input('page');
+        $date_greater_than = $request->input('date_greater_than');
+        $date_less_than = $request->input('date_less_than');
 
-        $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&primary_release_year=" . $year . "&vote_count.gte=50" . "&page=" . $page;
+
+        if ($date_greater_than && $date_less_than) {
+            $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=popularity.desc" . "&with_genres=" . $genres . "&page=" . $page . "&release_date.gte=" . $date_greater_than . "&release_date.lte=" . $date_less_than . "&with_release_type=2|3";
+        } else {
+            $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&page=" . $page . "&primary_release_date=" . $year . "&vote_count.gte=75";
+        }
+
 
         $client = new Client();
         $response = $client->request('GET', $url);

@@ -106,7 +106,7 @@ class TvController extends Controller
         $genres = $request->input('genres');
         $page = $request->input('page');
 
-        $url = "https://api.themoviedb.org/3/discover/tv?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&first_air_date_year=" . $year . "&vote_count.gte=50" . "&page=" . $page;
+        $url = "https://api.themoviedb.org/3/discover/tv?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&first_air_date_year=" . $year . "&vote_count.gte=75" . "&page=" . $page;
 
         $client = new Client();
         $response = $client->request('GET', $url);
