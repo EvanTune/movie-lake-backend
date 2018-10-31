@@ -11,7 +11,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/person/popular?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US&page=1";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -22,7 +22,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/person/" . $id . "?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -33,7 +33,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/person/" . $id . "/movie_credits?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -44,7 +44,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/person/" . $id . "/tv_credits?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -54,7 +54,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/person/" . $id . "/combined_credits?api_key=". env('MOVIE_DATABASE_API_KEY') ."&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -65,7 +65,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/person/" . $id . "/images?api_key=". env('MOVIE_DATABASE_API_KEY');
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -78,7 +78,7 @@ class PersonController extends Controller
 
         $url = "https://api.themoviedb.org/3/search/person?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US"  . "&vote_count.gte=50" . "&page=" . $page . "&query=" . $query;
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();

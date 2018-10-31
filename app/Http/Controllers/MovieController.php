@@ -14,7 +14,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/movie/popular?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -26,7 +26,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -38,7 +38,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/movie/now_playing?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -50,7 +50,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/movie/top_rated?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US&page=1";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -62,7 +62,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/movie/" . $id . "?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -74,7 +74,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/movie/" . $id . "/credits?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -85,7 +85,7 @@ class MovieController extends Controller
     {
         $url = "https://api.themoviedb.org/3/movie/" . $id . "/videos?api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US";
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -95,7 +95,7 @@ class MovieController extends Controller
     {
         $url = "https://api.themoviedb.org/3/movie/" . $id . "/images?api_key=" . env('MOVIE_DATABASE_API_KEY');
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -108,7 +108,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/search/multi?query=" . $query . "&api_key=" . env('MOVIE_DATABASE_API_KEY');
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -132,8 +132,7 @@ class MovieController extends Controller
             $url = "https://api.themoviedb.org/3/discover/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US" . "&sort_by=" . $sort . "&with_genres=" . $genres . "&page=" . $page . "&primary_release_year=" . $year . "&vote_count.gte=75";
         }
 
-
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -146,7 +145,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/search/movie?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US"  . "&vote_count.gte=50" . "&page=" . $page . "&query=" . $query;
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
@@ -158,7 +157,7 @@ class MovieController extends Controller
 
         $url = "https://api.themoviedb.org/3/search/multi?" . "api_key=" . env('MOVIE_DATABASE_API_KEY') . "&language=en-US"  . "&vote_count.gte=50" . "&page=" . $page . "&query=" . $query;
 
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $response = $client->request('GET', $url);
 
         return $response->getBody();
